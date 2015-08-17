@@ -94,7 +94,13 @@ But we prefer the first notation.
 
 ## The Abstraction of Instance Methods
 
-In Ruby, it is possible to simply retrieve an instance variable from an object with the following method: 
+In Ruby, it is possible to simply set an instance variable with the following method: 
+
+```ruby
+kanye.instance_variable_set(:@name, "Yeezy")
+```
+
+It is also possible to simply retrieve an instance variable from an object with the following method: 
 
 ```ruby
 kanye.instance_variable_get(:@name)
@@ -105,15 +111,15 @@ kanye.instance_variable_get(:@name)
 
 ### Syntactic Vinegar vs. Syntactic Sugar
 
-The first reason is a stylistic one but it is important. As object-oriented Rubyists, we care about our program's readability and design. The above method is ugly. It not only contains a verb, but it places that verb at the end of the method name. The weird grammar of this method should remind us not to use it. 
+The first reason is a stylistic one but it is important. As object-oriented Rubyists, we care about our program's readability and design. The above method is ugly. It it places a verb at the end of the method name. The weird grammar of this method should remind us not to use it. 
 
 ### Exposing Literal Variables vs. Abstracting Attributes
 
-The `instance_variable_get` method depends on a literal, concrete variable, `@name`. It exposes it directly to the person executing our code. This is a bad practice because it forces our program to rely directly on the `@name` variable. Why is this so terrible? Let's take a look at the following use case:
+The `instance_variable_set` method depends on a literal, concrete variable, `@name`. It exposes it directly to the person executing our code. This is bad practice becuase it forces our program to rely direclty on the `@name` variable. What is this so terrible? Let's take a look at the following use case:
 
 For example, Kanye (who by the way has commissioned you to write this amazing Person class program) has decided that our program should store both a first and last name. Let's do a quick refactor of our Person class. 
 
-We'll initialize our people with both a first and last name and write setter and getter methods for first and last name.  
+We'll initialize our `Person` instances with both a first and last name.
 
 ```ruby
 class Person
@@ -122,29 +128,21 @@ class Person
     @first_name = first_name
     @last_name = last_name
   end
-  
-  def first_name
-    @first_name
-  end
-  
-  def first_name=(new_name)
-    @first_name = new_name
-  end
-  
-  def last_name
-    @last_name
-  end
-  
-  def last_name=(new_name)
-    last_name = new_name
-  end
+
+  ...
+
+end
 ```
 
-Now, any other part of our program that was calling `instance_variable_get(:@name)` is broken! Allowing our code to rely on an instance variable directly created a program that *is not flexible*. If our program contains multiple occurrences of `instance_variable_get(:@name)`, we would have to hunt down each and every one and change it to accommodate our shift to using both a first and a last name. 
+With this change, our program does more than just make Kanye happy. It has some added functionalty. We could imagine collecting all of our instances of `Person` and sorting them by last name, for example. 
 
-Instead of writing code that depends on instance (or any type of) variables, we write *methods* that contain instance variables. This is a form of abstraction whereas the instance variable `@name` is a literal value. The literal value reference, the variable `@name`, may change as our application grows and we want our application to seamlessly accommodate that change. 
+BUT, now, any other part of our program that was calling `instance_variable_get(:@name)` is broken! Additionally, any part of our program that is calling `instance_variable_set(:@name)` isn't taking advantage of our new first name and last name functionality. Any attempt to change a person's name with `instance_variable_set(:@name)` wouldn't *really* change their name, because it wouldn't touch the `@first_name` and `@last_name`variables set with our `initialize` method. It would just give them an `@name` variable set to a different value than the `@first_name` and `@last_name` variables. That would get confusing, fast. 
 
-Let's create our abstraction: the `.name` instance method: 
+Allowing our code to rely on an instance variable directly created a program that *is not flexible*. If our program contains multiple occurrences of `instance_variable_get(:@name)` and `instance_variable_set(:@name)`, we would have to hunt down each and every one and change them to accommodate our shift to using both a first and a last name. 
+
+Instead of writing code that depends on instance (or any type of) variables, we write *methods* that contain instance variables. This is a form of abstraction, whereas the instance variable `@name` is a literal value. The literal value reference, the variable `@name`, may change as our application grows and we want our application to seamlessly accommodate that change. 
+
+Let's create our abstraction: the `.name=` and `.name` setter and getter instance methods: 
 
 ```ruby
 class Person
@@ -153,29 +151,28 @@ class Person
     @first_name = first_name
     @last_name = last_name
   end
-  
-  def first_name
-    @first_name
-  end
-  
-  def first_name=(new_name)
-    @first_name = new_name
-  end
-  
-  def last_name
-    @last_name
-  end
-  
-  def last_name=(new_name)
-    last_name = new_name
+
+  def name=(name_string)
+    # this method will now take in a string that contains
+    # a first name and a list name, separated by a space, 
+    # like this: "Kanye West"
+
+    @first_name = name_string.split(" ").first
+    @last_name = name_string.split(" ").last
   end
   
   def name
-    "#{@first_name} #{@last_name}"
+    "#{first_name} #{last_name}"
   end
+  
+end
 ```
 
-**Now, even if the content of the `.name` method changes (for example, Kanye changes his mind again and wants to be referred to only as "Yeezy"), the interface, how our application uses that content, remains constant.**
+**Now, even if the content of the `.name` method changes (for example, Kanye changes his mind again and wants to be referred to only as "Yeezy"), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages. 
+
+#### Another Benefit of Abstraction
+
+By wrapping the behaviors of assigning a name and retrieving a name inside instance methods, we make our program easier to debug. For example, let's say that a bug has developed in which our program breaks and stops running every time we try to assign a `Person` instance a name. If you're using `instance_variable_set`, it can be tough to ID the problem. If we wrap that setting of `@name` or `@first_name` and `@last_name` variables *inside* a method, we can place a `binding.pry` inside that method and run our program for easy, hands-on debugging
 
 
 ## Coming Up
