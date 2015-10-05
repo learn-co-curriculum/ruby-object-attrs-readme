@@ -111,7 +111,7 @@ kanye.instance_variable_get(:@name)
 
 ### Syntactic Vinegar vs. Syntactic Sugar
 
-The first reason is a stylistic one but it is important. As object-oriented Rubyists, we care about our program's readability and design. The above method is ugly. It it places a verb at the end of the method name. The weird grammar of this method should remind us not to use it. 
+The first reason is a stylistic one but it is important. As object-oriented Rubyists, we care about our program's readability and design. The above method is ugly. It places a verb at the end of the method name. The weird grammar of this method should remind us not to use it. 
 
 ### Exposing Literal Variables vs. Abstracting Attributes
 
