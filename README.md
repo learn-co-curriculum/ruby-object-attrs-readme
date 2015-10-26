@@ -115,7 +115,7 @@ The first reason is a stylistic one but it is important. As object-oriented Ruby
 
 ### Exposing Literal Variables vs. Abstracting Attributes
 
-The `instance_variable_set` method depends on a literal, concrete variable, `@name`. It exposes it directly to the person executing our code. This is bad practice becuase it forces our program to rely directly on the `@name` variable. What is this so terrible? Let's take a look at the following use case:
+The `instance_variable_set` method depends on a literal, concrete variable, `@name`. It exposes it directly to the person executing our code. This is bad practice becuase it forces our program to rely directly on the `@name` variable. Why is this so terrible? Let's take a look at the following use case:
 
 For example, Kanye (who by the way has commissioned you to write this amazing Person class program) has decided that our program should store both a first and last name. Let's do a quick refactor of our Person class. 
 
