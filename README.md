@@ -16,11 +16,9 @@ class Person
   def name
     @name
   end
+
 end
 
-kanye = Person.new("Kanye")
-kanye.name
-  => "Kanye"
 
 ```
 
