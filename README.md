@@ -2,9 +2,9 @@
 
 ## Objectives
 
-1. Learn how we use methods to abstract or wrap the attributes of an object.
-2. Understand the difference between a setter and a getter method.
-3. Learn how to build and use setter and getter methods
+1. Use methods to abstract or wrap the attributes of an object.
+2. Explain the difference between a setter and a getter method.
+3. Build and use setter and getter methods
 
 ## Introduction
 
