@@ -179,4 +179,4 @@ By wrapping the behaviors of assigning a name and retrieving a name inside insta
 
 In the following lab, you'll be defining your own class and setter and getter methods. Then, we'll discuss yet another level of abstraction dealing with these method types.
 
-<a href='https://learn.co/lessons/ruby-object-attrs-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme' title='Object Attributes and Methods: A Deeper Dive'>Object Attributes and Methods: A Deeper Dive</a> on Learn.co and start learning to code for free.</p>
