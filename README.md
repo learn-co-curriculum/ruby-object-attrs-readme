@@ -172,7 +172,7 @@ end
 
 #### Another Benefit of Abstraction
 
-By wrapping the behaviors of assigning a name and retrieving a name inside instance methods, we make our program easier to debug. For example, let's say that a bug has developed in which our program breaks and stops running every time we try to assign a `Person` instance a name. If you're using `instance_variable_set`, it can be tough to ID the problem. If we wrap that setting of `@name` or `@first_name` and `@last_name` variables *inside* a method, we can place a `binding.pry` inside that method and run our program for easy, hands-on debugging
+By wrapping the behaviors of assigning a name and retrieving a name inside instance methods, we make our program easier to debug. For example, let's say that a bug has developed in which our program breaks and stops running every time we try to assign a `Person` instance a name. If you're using `instance_variable_set`, it can be tough to ID the problem. If we wrap that setting of `@name` or `@first_name` and `@last_name` variables *inside* a method, we can place a `binding.pry` inside that method and run our program for easy, hands-on debugging.
 
 
 ## Coming Up
@@ -180,3 +180,5 @@ By wrapping the behaviors of assigning a name and retrieving a name inside insta
 In the following lab, you'll be defining your own class and setter and getter methods. Then, we'll discuss yet another level of abstraction dealing with these method types.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme' title='Object Attributes and Methods: A Deeper Dive'>Object Attributes and Methods: A Deeper Dive</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme'>Object Attributes Readme</a> on Learn.co and start learning to code for free.</p>
