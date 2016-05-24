@@ -8,7 +8,7 @@
 
 ## Introduction
 
-So far, we've learned how to build classes and even how to give our classes instance methods. For example, our Person class has an instance method, `.name`, that we can call on an instance of Person (an individual person object) and return that person's name.
+So far, we've learned how to build classes and even how to give our classes instance methods. For example, our Person class has an instance method, `#name`, that we can call on an instance of Person (an individual person object) and return that person's name.
 
 ```ruby
 class Person
@@ -38,7 +38,7 @@ We get a no method error! Kanye's name change is just one example of the many co
 
 ## Setter vs. Getter Methods
 
-Our Person class' `.name` method is referred to as a **"getter"** or reader method. It returns information stored in an instance variable. In order to make a person's name attribute writable, we need to define a **"setter"** method.
+Our Person class' `#name` method is referred to as a **"getter"** or reader method. It returns information stored in an instance variable. In order to make a person's name attribute writable, we need to define a **"setter"** method.
 
 ### Defining a Setter Method
 
@@ -80,8 +80,8 @@ kanye.name
 Let's break it down. We:
 
 * Instantiate a Person instance and name him "Kanye".
-* Call our getter method, `.name` to return his name, `"Kanye"`
-* Call our setter method `.name=` to change his name to "Yeezy"
+* Call our getter method, `#name` to return his name, `"Kanye"`
+* Call our setter method `#name=` to change his name to "Yeezy"
 * Call our getter method again and see that `kanye`'s name is now `"Yeezy"`.
 
 You can also call a setter method like this:
@@ -142,7 +142,7 @@ Allowing our code to rely on an instance variable directly created a program tha
 
 Instead of writing code that depends on instance (or any type of) variables, we write *methods* that contain instance variables. This is a form of abstraction, whereas the instance variable `@name` is a literal value. The literal value reference, the variable `@name`, may change as our application grows and we want our application to seamlessly accommodate that change.
 
-Let's create our abstraction: the `.name=` and `.name` setter and getter instance methods:
+Let's create our abstraction: the `#name=` and `#name` setter and getter instance methods:
 
 ```ruby
 class Person
@@ -152,23 +152,19 @@ class Person
     @last_name = last_name
   end
 
-  def name=(name_string)
-    # this method will now take in a string that contains
-    # a first name and a last name, separated by a space,
-    # like this: "Kanye West"
-
-    @first_name = name_string.split(" ").first
-    @last_name = name_string.split(" ").last
+  def name=(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
   end
 
   def name
-    "#{@first_name} #{@last_name}"
+    "#{@first_name} #{@last_name}".strip
   end
 
 end
 ```
 
-**Now, even if the content of the `.name` method changes (for example, Kanye changes his mind again and wants to be referred to only as "Yeezy"), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
+**Now, even if the content of the `#name` method changes, for example, Kanye changes his mind again and wants to be referred to only as "Yeezy" (using our interface this change would be `kanye.name = "Yeezy", ""`), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
 
 #### Another Benefit of Abstraction
 
