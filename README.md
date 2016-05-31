@@ -136,7 +136,7 @@ end
 
 With this change, our program does more than just make Kanye happy. It has some added functionalty. We could imagine collecting all of our instances of `Person` and sorting them by last name, for example.
 
-BUT, now, any other part of our program that was calling `instance_variable_get(:@name)` is broken! Additionally, any part of our program that is calling `instance_variable_set(:@name)` isn't taking advantage of our new first name and last name functionality. Any attempt to change a person's name with `instance_variable_set(:@name)` wouldn't *really* change their name, because it wouldn't touch the `@first_name` and `@last_name`variables set with our `initialize` method. It would just give them an `@name` variable set to a different value than the `@first_name` and `@last_name` variables. That would get confusing, fast.
+BUT, now, any other part of our program that was calling `instance_variable_get(:@name)` is broken! Additionally, any part of our program that is calling `instance_variable_set(:@name)` isn't taking advantage of our new first name and last name functionality. Any attempt to change a person's name with `instance_variable_set(:@name)` wouldn't *really* change their name, because it wouldn't touch the `@first_name` and `@last_name`variables set with our `initialize` method. It would just give them a `@name` variable set to a different value than the `@first_name` and `@last_name` variables. That would get confusing, fast.
 
 Allowing our code to rely on an instance variable directly created a program that *is not flexible*. If our program contains multiple occurrences of `instance_variable_get(:@name)` and `instance_variable_set(:@name)`, we would have to hunt down each and every one and change them to accommodate our shift to using both a first and a last name.
 
@@ -178,3 +178,5 @@ In the following lab, you'll be defining your own class and setter and getter me
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme' title='Object Attributes and Methods: A Deeper Dive'>Object Attributes and Methods: A Deeper Dive</a> on Learn.co and start learning to code for free.</p>
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme'>Object Attributes Readme</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme'>Object Attributes</a> on Learn.co and start learning to code for free.</p>
