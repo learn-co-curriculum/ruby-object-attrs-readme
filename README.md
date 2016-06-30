@@ -152,7 +152,8 @@ class Person
     @last_name = last_name
   end
 
-  def name=(first_name, last_name)
+  def name=(full_name)
+    first_name, last_name = full_name.split
     @first_name = first_name
     @last_name = last_name
   end
@@ -164,7 +165,7 @@ class Person
 end
 ```
 
-**Now, even if the content of the `#name` method changes, for example, Kanye changes his mind again and wants to be referred to only as "Yeezy" (using our interface this change would be `kanye.name = "Yeezy", ""`), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
+**Now, even if the content of the `#name` method changes, for example, Kanye changes his mind again and wants to be referred to only as "Yeezy" (using our interface this change would be `kanye.name = "Yeezy"`), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
 
 #### Another Benefit of Abstraction
 
