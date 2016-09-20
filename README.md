@@ -60,7 +60,7 @@ class Person
 end
 ```
 
-A setter method is defined with an `=`, equals sign, appending to the name of the method. The `=` is followed by the `(argument_name)`. Now that we've defined our setter method on the Person class, we can change Kanye's name.
+A setter method is defined with an `=`, equals sign, appended to the name of the method. The `=` is followed by the `(argument_name)`. Now that we've defined our setter method on the Person class, we can change Kanye's name.
 
 ### Calling a Setter Method
 
