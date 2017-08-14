@@ -38,7 +38,7 @@ We get a no method error! Kanye's name change is just one example of the many co
 
 ## Setter vs. Getter Methods
 
-Our Person class' `#name` method is referred to as a **"getter"** or reader method. It returns information stored in an instance variable. In order to make a person's name attribute writable, we need to define a **"setter"** method.
+Our Person class' `#name` method is referred to as a **"getter"** or reader method. It returns information stored in an instance variable. In order to make a person's name attribute writable, we need to define a **"setter"** or writer method.
 
 ### Defining a Setter Method
 
