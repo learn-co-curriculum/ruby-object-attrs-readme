@@ -22,16 +22,15 @@ class Person
 end
 
 kanye = Person.new("Kanye")
-kanye.name
-  => "Kanye"
+kanye.name #=> "Kanye"
 
 ```
 
 But wait! Kanye has decided he wants to be referred to as "Yeezy". Kanye is a huge star so we should probably do what he says. However, as it currently stands, we don't have a way to re-assign Kanye's name. Let's see what happens when we try:
 
 ```ruby
-kanye.name = "Yeezy"
- => NoMethodError: undefined method `name=' for #<Person:0x007fd7cbb0f3d8>
+kanye.name = "Yeezy" 
+#=> NoMethodError: undefined method `name=' for #<Person:0x007fd7cbb0f3d8>
 ```
 
 We get a no method error! Kanye's name change is just one example of the many common situations in which we might want to alter the information or attributes associated with a given object. Let's move on to the next section to learn how to add that functionality to our classes.
@@ -129,7 +128,7 @@ class Person
     @last_name = last_name
   end
 
-  ...
+  #...
 
 end
 ```
@@ -176,7 +175,7 @@ By wrapping the behaviors of assigning a name and retrieving a name inside insta
 
 In the following lab, you'll be defining your own class and setter and getter methods. Then, we'll discuss yet another level of abstraction dealing with these method types.
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme' title='Object Attributes and Methods: A Deeper Dive'>Object Attributes and Methods: A Deeper Dive</a> on Learn.co and start learning to code for free.</p>
+<p class='util--hide'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme'>Object Attributes Readme</a> on Learn.co and start learning to code for free.</p>
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/ruby-object-attrs-readme'>Object Attributes Readme</a> on Learn.co and start learning to code for free.</p>
 
