@@ -166,11 +166,6 @@ end
 
 **Now, even if the content of the `#name` method changes, for example, Kanye changes his mind again and wants to be referred to only as "Yeezy" (using our interface this change would be `kanye.name = "Yeezy"`), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
 
-#### Another Benefit of Abstraction
-
-By wrapping the behaviors of assigning a name and retrieving a name inside instance methods, we make our program easier to debug. For example, let's say that a bug has developed in which our program breaks and stops running every time we try to assign a `Person` instance a name. If you're using `instance_variable_set`, it can be tough to ID the problem. If we wrap that setting of `@name` or `@first_name` and `@last_name` variables *inside* a method, we can place a `binding.pry` inside that method and run our program for easy, hands-on debugging.
-
-
 ## Coming Up
 
 In the following lab, you'll be defining your own class and setter and getter methods. Then, we'll discuss yet another level of abstraction dealing with these method types.
