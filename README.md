@@ -8,7 +8,7 @@
 
 ## Introduction
 
-So far, we've learned how to build classes and even how to give our classes instance methods. For example, our Person class has an instance method, `#name`, that we can call on an instance of Person (an individual person object) and return that person's name.
+So far, we've learned how to build classes and even how to give our classes instance methods. Now, we can add the special method `initialize`, which will require certain arguments to be passed when instantiating the class to provide it with initial data. In this example, our Person class has an instance method, `#name`, that is set each time a new Person class is created. This `name` method can be can called on an instance of Person (an individual person object) and return that person's name.
 
 ```ruby
 class Person
@@ -165,11 +165,6 @@ end
 ```
 
 **Now, even if the content of the `#name` method changes, for example, Kanye changes his mind again and wants to be referred to only as "Yeezy" (using our interface this change would be `kanye.name = "Yeezy"`), the interface, how our application uses that content, remains constant.** In other words, we can change the content of these methods according to our needs, without needing to hunt down every appearance of them in our program and change them as well, like we would need to do with our `instance_method_set` and `instance_method_get` usages.
-
-#### Another Benefit of Abstraction
-
-By wrapping the behaviors of assigning a name and retrieving a name inside instance methods, we make our program easier to debug. For example, let's say that a bug has developed in which our program breaks and stops running every time we try to assign a `Person` instance a name. If you're using `instance_variable_set`, it can be tough to ID the problem. If we wrap that setting of `@name` or `@first_name` and `@last_name` variables *inside* a method, we can place a `binding.pry` inside that method and run our program for easy, hands-on debugging.
-
 
 ## Coming Up
 
