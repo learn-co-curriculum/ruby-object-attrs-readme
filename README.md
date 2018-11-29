@@ -8,7 +8,7 @@
 
 ## Introduction
 
-So far, we've learned how to build classes and even how to give our classes instance methods. Now, we can add the special method `initialize`, which will require certain arguments to be passed when instantiating the class to provide it with initial data. In this example, our Person class has an instance method, `#name`, that is set each time a new Person class is created. This `name` method can be can called on an instance of Person (an individual person object) and return that person's name.
+So far, we've learned how to build classes and even how to give our classes instance methods. Now, we can add the special method `initialize`, which will require certain arguments to be passed when instantiating the class to provide it with initial data. In this example, our Person class has an instance method, `#name`, that is set each time a new Person class is created. This `name` method can be called on an instance of Person (an individual person object) and return that person's name.
 
 ```ruby
 class Person
